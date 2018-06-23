@@ -49,14 +49,19 @@ public class AssignmentCriteriaTest {
     }
 
     @Test
-    public void testCriteria() {
+    public void testOrderIdExecutionCriteria() {
         Criteria assignmentCriteria = new OrderPriorityCriteria();
         List<AssignedOrders> results = assignmentCriteria.assignOrders(orders, deliveryExecutives);
 
         assertEquals(results.get(0).getOrderId(), 3);
         assertEquals(results.get(1).getOrderId(), 1);
         assertEquals(results.get(2).getOrderId(), 2);
+    }
 
+    @Test
+    public void testOrderExecutiveMapping() {
+        Criteria assignmentCriteria = new OrderPriorityCriteria();
+        List<AssignedOrders> results = assignmentCriteria.assignOrders(orders, deliveryExecutives);
 
         assertEquals(results.get(0).getDeliveryExecutiveId(), 1);
         assertEquals(results.get(1).getDeliveryExecutiveId(), 2);
